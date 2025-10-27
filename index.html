@@ -1,0 +1,364 @@
+<!DOCTYPE html> 
+<!-- Menentukan tipe dokumen HTML5 -->
+
+<html lang="id">
+<!-- Elemen utama dokumen HTML dengan bahasa utama Bahasa Indonesia -->
+
+<head>
+    <!-- Bagian head: berisi metadata, judul, dan gaya tampilan (CSS) -->
+
+    <meta charset="UTF-8">
+    <!-- Mengatur encoding karakter agar teks (huruf & simbol) tampil dengan benar -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Mengatur agar tampilan bersifat responsif di perangkat seluler -->
+
+    <title>Infografis Kota Surakarta</title>
+    <!-- Judul halaman yang tampil di tab browser -->
+
+    <style>
+        /* BAGIAN STYLING UMUM (BODY) */
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            /* Menentukan jenis huruf utama yang digunakan pada halaman. */
+            background-color: #f0f6ff;
+            /* Memberi warna latar belakang lembut biru muda pada halaman. */
+            margin: 0;
+            /* Menghapus margin bawaan dari browser agar konten menempel ke tepi layar. */
+            color: #333;
+            /* Mengatur warna dasar teks menjadi abu gelap agar mudah dibaca. */
+            display: flex;
+            justify-content: center;
+            /* Menyusun seluruh konten agar berada di tengah halaman secara horizontal. */
+        }
+
+        .container {
+            width: 60%;
+            /* Membatasi lebar utama konten hanya 60% dari total layar agar proporsional. */
+            background-color: #f0f6ff;
+            /* Menyamakan warna latar belakang konten utama dengan warna body. */
+            min-height: 100vh;
+            /* Menentukan tinggi minimal elemen setara dengan tinggi layar (viewport height). */
+            padding: 30px;
+            /* Memberikan jarak dalam antara isi konten dan tepi wadah (container). */
+            box-sizing: border-box;
+            /* Agar padding tidak menambah total ukuran lebar elemen. */
+        }
+
+        /* BLOK WARNA SAMPING SEBAGAI DEKORASI */
+        body::before,
+        body::after {
+            content: "";
+            /* Membuat elemen semu (pseudo-element) tanpa teks, hanya untuk dekorasi. */
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 20%;
+            /* Mengatur lebar masing-masing sisi 20% dari layar. */
+
+            background-color: #003366;
+            /* Warna biru tua sebagai elemen dekoratif di sisi kanan dan kiri layar. */
+            z-index: -1;
+            /* Menempatkan blok biru di belakang elemen utama agar tidak menutupi konten. */
+        }
+
+        body::before {
+            left: 0;
+            /* Posisi blok biru pertama di sisi kiri layar. */
+        }
+
+        body::after {
+            right: 0;
+            /* Posisi blok biru kedua di sisi kanan layar. */
+        }
+
+        /* BAGIAN HEADER (AREA ATAS) */
+        .header {
+            display: flex;
+            /* Menyusun logo dan teks secara horizontal. */
+            align-items: center;
+            /* Menyelaraskan elemen vertikal agar sejajar di tengah. */
+            justify-content: flex-start;
+            /* Menyusun elemen mulai dari sisi kiri. */
+            gap: 20px;
+            /* Memberikan jarak antar elemen di dalam header. */
+            margin-bottom: 15px;
+            /* Memberi ruang di bawah header sebelum konten berikutnya. */
+            padding: 20px;
+            /* Jarak dalam antara isi header dan tepi kotak. */
+            background-image: url('Keraton Surakarta.JPG');
+            /* Menggunakan gambar Keraton Surakarta sebagai latar belakang header. */
+            background-size: cover;
+            background-position: center;
+            /* Menyesuaikan gambar agar memenuhi area tanpa terpotong aneh. */
+            border-radius: 12px;
+            /* Membulatkan sudut header agar tampil lembut. */
+            position: relative;
+            overflow: hidden;
+            /* Menyembunyikan bagian gambar atau elemen yang keluar dari area header. */
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 51, 102, 0.55);
+            /* Memberikan lapisan warna biru transparan di atas gambar latar agar teks lebih jelas dibaca. */
+        }
+
+        .header img {
+            height: 90px;
+            /* Mengatur tinggi logo sebesar 90 piksel */
+            object-fit: contain;
+            /* Menjaga proporsi logo agar tidak terdistorsi. */
+            position: relative;
+            z-index: 2;
+            /* Menempatkan logo di atas lapisan transparan agar terlihat. */
+        }
+
+        .logo-group {
+            display: flex;
+            flex-direction: row;
+            /* Mengatur posisi penempatan logo secara mendatar */
+            align-items: center;
+            /* Mengatur letak logo di tengah-tengah kontainer */
+            gap: 8px;
+            /* Mengatur jarak antar kedua logo. */
+            position: relative;
+            z-index: 2;
+            /* Menempatkan logo di atas overlay. */
+        }
+
+        .header-text {
+            line-height: 1.4;
+            color: #fff;
+            /* Warna teks putih agar kontras dengan latar belakang biru. */
+            position: relative;
+            z-index: 2;
+            /* Menempatkan posisi layer di atas overlay */
+        }
+
+        .header-text h1 {
+            font-size: 32px;
+            /* mengatur ukuran teks judul sebesar 32 piksel */
+            margin: 0;
+            font-weight: bold;
+            /* Judul utama berukuran besar dan tebal. */
+        }
+
+        .header-text h2 {
+            font-size: 18px;
+            /* Mengatur ukuran teks subjudul sebesar 18 piksel*/
+            font-style: italic;
+            /* Mengatur gaya teks subjudul dengan italic */
+            font-weight: normal;
+            margin: 0;
+            color: #dfefff;
+            /* Subjudul lebih kecil dan berwarna biru muda. */
+        }
+
+        /* BAGIAN INFOGRAFIS (ISI UTAMA) */
+        .infografis {
+            margin-top: 10px;
+            margin-bottom: 25px;
+            text-align: justify;
+            /* Meratakan teks di kiri dan kanan agar rapi. */
+            line-height: 1.7;
+            /* Mengatur jarak antar baris agar nyaman dibaca. */
+            font-size: 15px;
+            background-image: url('Jalan Jendral Sudirman Surakarta.JPG');
+            /* Menggunakan foto Pasar Gede sebagai latar belakang bagian isi. */
+
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .infografis::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 51, 102, 0.65);
+            /* Memberi overlay biru tua transparan pada background agar teks di atas latar gambar tetap jelas. */
+        }
+
+        .infografis-content {
+            position: relative;
+            z-index: 2;
+            padding: 16px;
+            background-color: rgba(255, 255, 255, 0.15);
+            /* Memberikan lapisan lembut semi-transparan di belakang teks. */
+            border-radius: 10px;
+        }
+
+        /* BAGIAN PETA DAN TABEL INFORMASI */
+        .table-section {
+            display: flex;
+            /* Menyusun dua elemen (gambar dan tabel) secara sejajar horizontal. */
+            align-items: flex-start;
+            gap: 20px;
+            /* Memberikan jarak antara peta dan tabel. */
+            margin-top: 20px;
+        }
+
+        .table-section img {
+            width: 40%;
+            /* Lebar gambar peta diatur 40% dari area total. */
+            border-radius: 10px;
+            /* Membulatkan sudut peta agar selaras dengan tema desain. */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            /* Menambahkan efek bayangan agar peta terlihat menonjol. */
+        }
+
+
+        /* TABEL KEPENDUDUKAN */
+        .data-table {
+            border-collapse: collapse;
+            /* Menggabungkan garis batas antar sel agar tampak rapi. */
+            width: 60%;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #ffffff;
+            /* Warna dasar putih untuk tabel. */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            /* Efek bayangan ringan pada tabel. */
+        }
+
+        .data-table caption {
+            caption-side: top;
+            font-weight: bold;
+            padding: 10px;
+            color: #002a66;
+            font-size: 18px;
+            /* Menata judul tabel agar tampak menonjol di bagian atas. */
+        }
+
+        .data-table th {
+            background-color: #003366;
+            /* Warna biru tua untuk baris judul kolom. */
+            color: white;
+            padding: 10px;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 9px;
+            text-align: center;
+            border-bottom: 1px solid #c1d7ff;
+            /* Garis pemisah antarbaris berwarna biru muda. */
+            color: #003366;
+            background-color: #f8fbff;
+        }
+
+        .data-table tr:nth-child(even) td {
+            background-color: #e6f0ff;
+            /* Memberi warna berbeda untuk baris genap agar tabel lebih mudah dibaca. */
+        }
+
+        .data-table tr:hover td {
+            background-color: #cce0ff;
+            transition: 0.3s;
+            /* Efek highlight saat kursor diarahkan ke baris tabel. */
+        }
+
+
+        /* BAGIAN FOOTER (BAGIAN BAWAH) */
+        footer {
+            text-align: center;
+            /* Menyusun teks di tengah halaman. */
+            margin-top: 20px;
+            font-size: 14px;
+            color: #fff;
+            background-image: url('Balaikota Surakarta.JPG');
+            /* Menambahkan gambar Balaikota sebagai latar belakang footer. */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 15px;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 51, 102, 0.6);
+            /* Overlay transparan agar teks putih lebih mudah dibaca di atas gambar. */
+        }
+
+        footer p {
+            position: relative;
+            z-index: 2;
+            margin: 5px 0;
+            /* Menjaga agar teks footer tetap di atas overlay dan memiliki jarak antarbaris. */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <!-- Grup logo: berisi dua gambar logo -->
+            <div class="logo-group">
+                <img src="Logo Kota Surakarta.png" alt="Logo Kota Surakarta">
+                <img src="Solo spirit of java.png" alt="Logo Solo Spirit of Java">
+            </div>
+
+            <!-- Teks judul dan subjudul -->
+            <div class="header-text">
+                <h1><i>Solo, The Spirit of Java</i></h1>
+                <h2>Infografis Geografi Kota Surakarta</h2>
+            </div>
+        </div>
+
+        <!-- INFOGRAFIS -->
+        <div class="infografis">
+            <div class="infografis-content">
+                <!-- Paragraf berisi penjelasan umum tentang Kota Surakarta -->
+                Kota Surakarta, atau lebih dikenal sebagai Solo, merupakan salah satu pusat kebudayaan dan perekonomian di Provinsi Jawa Tengah yang terletak di lembah Sungai Bengawan Solo dengan ketinggian sekitar 92 meter di atas permukaan laut dan luas wilayah ±44,04 km². Kota ini beriklim tropis basah dengan suhu rata-rata 23–33°C dan curah hujan tahunan sekitar 2.200 mm, sehingga mendukung kegiatan pertanian perkotaan serta lingkungan hijau.
+                <br><br>
+                Secara administratif, Surakarta terdiri atas lima kecamatan, yaitu Laweyan, Serengan, Pasar Kliwon, Jebres, dan Banjarsari yang dikelola oleh pemerintah kota di bawah kepemimpinan wali kota dan wakil wali kota. Struktur perekonomian kota didominasi oleh sektor perdagangan, jasa, industri kreatif, serta pariwisata yang berkembang pesat berkat peran aktif masyarakat dan dukungan investasi swasta.
+                <br><br>
+                Dalam aspek sosial, masyarakat Surakarta dikenal terbuka, berpendidikan, dan berbudaya tinggi dengan keberadaan lembaga pendidikan unggulan seperti Universitas Sebelas Maret. Kota ini juga terkenal dengan warisan budaya dan destinasi wisata seperti Keraton Kasunanan, Pura Mangkunegaran, Pasar Klewer, serta Kampung Batik Laweyan yang memperkuat julukannya sebagai “Kota Budaya.”
+                <br><br>
+                Di bidang industri, Surakarta mengandalkan sektor tekstil, batik, kerajinan, dan makanan olahan, sekaligus mengembangkan ekonomi digital dan UMKM berbasis budaya untuk mendukung pertumbuhan ekonomi daerah yang berkelanjutan.
+            </div>
+        </div>
+
+        <!-- PETA & TABEL DATA -->
+        <div class="table-section">
+            <!-- Gambar peta di sisi kiri -->
+            <img src="Peta_Solo_per_kelurahan.png" alt="Peta Kota Surakarta">
+
+            <!-- Tabel administrasi dan kependudukan -->
+            <table class="data-table">
+                <caption>Tabel Administrasi & Kependudukan Kota Surakarta</caption>
+                <tr>
+                    <th>Kecamatan</th>
+                    <th>Ibukota Kecamatan<br><i><font size="2">Capital of District</font></i></th>
+                    <th>Luas Daerah<br><i><font size="2">Total Area (km<sup>2</sup>)</font></i></th>
+                    <th>Jumlah Penduduk<br><i><font size="2">Total Population</font></i></th>
+                </tr>
+                <tr><td>Laweyan</td><td>Penumping</td><td>9,13</td><td>88.978</td></tr>
+                <tr><td>Serengan</td><td>Serengan</td><td>3,08</td><td>48.567</td></tr>
+                <tr><td>Pasar Kliwon</td><td>Joyosuran</td><td>4,88</td><td>79.972</td></tr>
+                <tr><td>Jebres</td><td>Jebres</td><td>14,38</td><td>139.321</td></tr>
+                <tr><td>Banjarsari</td><td>Banyuanyar</td><td>15,26</td><td>172.241</td></tr>
+            </table>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <!-- Informasi kontak resmi Pemerintah Kota Surakarta -->
+            <p><b>Pemerintah Kota Surakarta</b></p>
+            <p>Balaikota Surakarta</p>
+            <p>Jl. Jend. Sudirman No.2, Kp. Baru, Kec. Ps. Kliwon, Kota Surakarta, Jawa Tengah 57133</p>
+            <p>Telp : (0271) 644315</p>
+        </footer>
+    </div>
+</body>
+</html>
